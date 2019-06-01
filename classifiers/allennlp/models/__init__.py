@@ -1,0 +1,1 @@
+from classifiers.allennlp.models.lstm_classifier import LstmClassifier

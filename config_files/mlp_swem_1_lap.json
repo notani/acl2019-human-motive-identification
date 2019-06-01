@@ -1,0 +1,47 @@
+{
+    "dataset_reader": {
+        "type": "semeval2016",
+        "target_domain": "lap",
+        "multitask": false
+    },
+    "train_data_path": "data/lap.v2/0/train.tsv",
+    "validation_data_path": "data/lap.v2/0/valid.tsv",
+    "test_data_path": "data/lap.v2/0/test.tsv",
+    "evaluate_on_test": false,
+    "model": {
+        "type": "mlp_classifier",
+        "word_embedder": {
+            "token_embedders": {
+                "tokens": {
+                    "type": "embedding",
+                    "pretrained_file": "embeddings/GloVe/glove.6B.100d.txt.gz",
+                    "embedding_dim": 100,
+                    "trainable": false
+                }
+            }
+        },
+        "classifier_feedforward": {
+            "input_dim": 200,
+            "num_layers": 2,
+            "hidden_dims": [100, 6],
+            "activations": ["relu", "linear"],
+            "dropout": [0.5, 0.0]
+        },
+        "aggregation_type": "concat"
+    },
+    "iterator": {
+        "type": "bucket",
+        "sorting_keys": [["sentence", "num_tokens"]],
+        "batch_size": 64
+    },
+    "trainer": {
+        "num_epochs": 30,
+        "num_serialized_models_to_keep": 1,
+        "cuda_device": -1,
+        "validation_metric": "+macro_f1",
+        "optimizer": {
+            "type": "adam",
+            "weight_decay": 0
+        }
+    }
+}

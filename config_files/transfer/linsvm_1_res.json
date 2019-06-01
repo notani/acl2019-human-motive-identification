@@ -1,0 +1,53 @@
+{
+    "model": {
+        "type": "linsvm",
+        "class_weight": true,
+        "tfidf": false
+    },
+    "datasets": [
+        {
+            "train_data_path": {
+                "res": "data/res.v2/0/train.tsv",
+                "lap": "data/lap.v2/0/train.tsv"
+            },
+            "validation_data_path": {
+                "res": "data/res.v2/0/valid.tsv",
+                "lap": "data/lap.v2/0/valid.tsv"
+            },
+            "test_data_path": {
+                "res": "data/res.v2/0/test.tsv",
+                "lap": "data/lap.v2/0/test.tsv"
+            }
+        },
+        {
+            "train_data_path": {
+                "res": "data/res.v2/1/train.tsv",
+                "lap": "data/lap.v2/1/train.tsv"
+            },
+            "validation_data_path": {
+                "res": "data/res.v2/1/valid.tsv",
+                "lap": "data/lap.v2/1/valid.tsv"
+            },
+            "test_data_path": {
+                "res": "data/res.v2/1/test.tsv",
+                "lap": "data/lap.v2/1/test.tsv"
+            }
+        },
+        {
+            "train_data_path": {
+                "res": "data/res.v2/2/train.tsv",
+                "lap": "data/lap.v2/2/train.tsv"
+            },
+            "validation_data_path": {
+                "res": "data/res.v2/2/valid.tsv",
+                "lap": "data/lap.v2/2/valid.tsv"
+            },
+            "test_data_path": {
+                "res": "data/res.v2/2/test.tsv",
+                "lap": "data/lap.v2/2/test.tsv"
+            }
+        }
+    ],
+    "target": "res",
+    "average_score": true
+}
