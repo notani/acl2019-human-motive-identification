@@ -30,7 +30,7 @@ Example:
 
 ## Note
 
-Due to the license restriction of the SemEval dataset, we do not provide sentences and other metadata provided by Pontiki et al. You can download then from [the official website of SemEval 2016 Task 5](http://alt.qcri.org/semeval2016/task5/). We provide sentence IDs in files to combine our motive annotations with the SemEval dataset. For example, the following motive annotation is aligned with the third sentence (sentence index=2) of document 757762.
+Due to the license restriction of the SemEval dataset, we do not provide sentences and other metadata provided by Pontiki et al. The data is available at [the official website of SemEval 2016 Task 5](http://alt.qcri.org/semeval2016/task5/). We provide sentence IDs in files to combine our motive annotations with the SemEval dataset. For example, the following motive annotation is aligned with the third sentence (sentence index=2) of document 757762.
 
 ```
 757762:2	8	0	0	1	0	1	0
@@ -51,6 +51,30 @@ Due to the license restriction of the SemEval dataset, we do not provide sentenc
             ...
 ```
 
+## Preprocessing
+
+After downloading the files:
+
+```
+semeval2016/
+├── subtask1
+│   └── en
+│       ├── laptops_train_v2.xml
+│       └── restaurants_train_v2.xml
+└── subtask2
+    └── en
+        ├── laptops_train.xml
+        └── restaurants_train.xml
+```
+
+```shell
+python xml2tsv.py semeval2016/subtask1/en/restaurants_train_v2.xml -o semeval2016/subtask1/en/restaurants_train_v2.tsv -v
+python xml2tsv.py semeval2016/subtask1/en/laptops_train_v2.xml -o semeval2016/subtask1/en/laptops_train_v2.tsv -v
+
+python attach_annotations.py
+
+python tokenize_text.py
+```
 
 ## Reference
 
