@@ -8,6 +8,6 @@ DOMAIN = ['res', 'lap']
 
 # Target labels
 MOTIVES = ['Self-fulfill', 'Appreciating Beauty',
-          'Social Relating', 'Health',
-          'Ambition & Ability', 'Financial & Occupational Success']
+          'Social Relation', 'Health',
+          'Ambition & Ability', 'Finance']
 NUM_MOTIVES = len(MOTIVES)

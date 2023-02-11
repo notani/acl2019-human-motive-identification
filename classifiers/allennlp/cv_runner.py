@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from allennlp.common.util import import_submodules
+from allennlp.common.util import import_module_and_submodules
 import json
 import numpy as np
 import os
@@ -56,6 +56,7 @@ class CVRunner():
                 'patience': None,
                 'num_serialized_models_to_keep': 1
             }
+            print('param', self.param_path)
             result = args.func(self.param_path,
                                serialization_dir,
                                json.dumps(overrides),
@@ -80,9 +81,9 @@ class CVRunner():
         param = buff[0][-1]
         overrides = self.get_overrides(param)
         overrides['train_data_path'] = self.conf['train_data_path'].replace(
-            'train.tsv', 'train+valid.tsv')
+            'train.', 'train+valid.')
         overrides['validation_data_path'] = self.conf['validation_data_path'].replace(
-            'valid.tsv', 'test.tsv')
+            'valid.', 'test.')
         overrides['test_data_path'] = None
         overrides['trainer'] = {'patience': None}
         result = args.func(self.param_path,
@@ -99,7 +100,7 @@ class CVRunner():
         start = time.time()
 
         for package_name in getattr(args, 'include_package', ()):
-            import_submodules(package_name)
+            import_module_and_submodules(package_name)
 
             for fold in range(n_folds):
                 print('[Fold-{}]'.format(fold+1))
